@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quà 20/10 🎀</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Comic Sans MS", sans-serif;
+    background: linear-gradient(135deg, #ffe0ec, #ffc4dc, #fff0f5);
+    overflow: hidden;
+}
+
+.heart {
+    position: fixed;
+    color: #ff70a6;
+    font-size: 25px;
+    animation: float 5s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes float {
+    from {
+        transform: translateY(110vh) rotate(0deg);
+    }
+    to {
+        transform: translateY(-15vh) rotate(360deg);
+    }
+}
+
+.card {
+    width: 90%;
+    max-width: 380px;
+    padding: 30px 22px;
+    text-align: center;
+    background: rgba(255,255,255,0.88);
+    border: 3px solid white;
+    border-radius: 30px;
+    box-shadow: 0 12px 35px #f08bb766;
+    position: relative;
+    z-index: 2;
+}
+
+h1 {
+    color: #ff5793;
+    font-size: 28px;
+    margin: 8px 0;
+}
+
+p {
+    color: #c65383;
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    margin: 12px 0;
+    border: 2px solid #ffb4d0;
+    border-radius: 15px;
+    outline: none;
+    font-size: 16px;
+    text-align: center;
+}
+
+button {
+    border: none;
+    padding: 13px 25px;
+    border-radius: 20px;
+    background: #ff6fa5;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 0 #e54b86;
+}
+
+button:active {
+    transform: translateY(3px);
+    box-shadow: 0 2px 0 #e54b86;
+}
+
+#error {
+    color: #ff386b;
+    font-size: 14px;
+}
+
+#gift {
+    display: none;
+}
+
+.monkey {
+    width: 100%;
+    max-width: 270px;
+    border-radius: 20px;
+    margin: 15px auto;
+    display: block;
+}
+
+.marquee {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    background: #ff6fa5;
+    color: white;
+    padding: 13px 0;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.marquee span {
+    display: inline-block;
+    padding-left: 100%;
+    animation: move 7s linear infinite;
+}
+
+@keyframes move {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+}
+
+.small {
+    font-size: 13px;
+    color: #db78a1;
+}
+</style>
+</head>
+
+<body>
+
+<script>
+for (let i = 0; i < 18; i++) {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.textContent = ["♥", "♡", "🎀", "🌸"][i % 4];
+    heart.style.left = Math.random() * 100 + "%";
+    heart.style.animationDelay = Math.random() * 5 + "s";
+    heart.style.animationDuration = (4 + Math.random() * 5) + "s";
+    document.body.appendChild(heart);
+}
+</script>
+
+<div class="card" id="login">
+    <div style="font-size:45px">🎀🌷💗</div>
+    <h1>Happy 20/10!</h1>
+    <p>🌸 Hộp quà bí mật dành riêng cho bạn 🌸</p>
+    <p>Nhập mật mã để mở quà nàooo 💌</p>
+
+    <input
+        type="password"
+        id="password"
+        placeholder="Nhập mật mã ở đây..."
+        autocomplete="off"
+    >
+
+    <br>
+
+    <button onclick="unlock()">Mở quà 🎁</button>
+
+    <p id="error"></p>
+    <div class="small">Chúc bạn một ngày 20/10 thật vui 💕</div>
+</div>
+
+<div class="card" id="gift">
+    <div style="font-size:35px">🎁💖🎀</div>
+    <h1>QUÀ 20/10 ĐÂY RỒI!</h1>
+    <p>Đợi mãi mới chịu mở cơ à 😂</p>
+
+    <img
+        class="monkey"
+        src="https://media.tenor.com/2roX3uxz_68AAAAC/monkey-thinking.gif"
+        alt="Ảnh khỉ vui nhộn"
+        onerror="this.onerror=null;this.src='https://placehold.co/300x220/ffd6e7/aa3366?text=MONKEY+GIFT';"
+    >
+
+    <div class="marquee">
+        <span>💗 có cc quà kkk 🤡 có cc quà kkk 💗 có cc quà kkk 🤡</span>
+    </div>
+
+    <p>💐 Chúc mừng ngày 20/10 nhaaa 💐</p>
+    <button onclick="location.reload()">Đóng quà 😈</button>
+</div>
+
+<script>
+function unlock() {
+    const pass = document.getElementById("password").value;
+
+    if (pass === "20/10VUIVE") {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("gift").style.display = "block";
+    } else {
+        document.getElementById("error").textContent =
+            "Sai mật mã rồi bé ơi 🥺 Thử lại đi!";
+    }
+}
+
+document.getElementById("password").addEventListener("keydown", function(e) {
+    if (e.key === "Enter") unlock();
+});
+</script>
+
+</body>
+</html>
